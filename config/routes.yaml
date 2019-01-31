@@ -3,13 +3,9 @@
 #    controller: App\Controller\DefaultController::index
 
 prenoms:
-    path: /prenoms
+    path: /
     defaults: {_controller: 'App\Controller\PrenomController::index'}
 
 resultat:
     path: /resultat
     defaults: {_controller: 'App\Controller\ResultatController::index'}
-
-rgistre:
-  path: /register
-  defaults: {_controller: 'App\Controller\PrenomController::register'}

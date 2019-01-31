@@ -14,15 +14,17 @@ class PrenomController extends AbstractController
      */
     public function index()
     {
-
+    
     	$em = $this->getDoctrine()->getManager();
-    	$prenom = $em->getRepository(Prenom::class)->findByExampleField('test');
-
-    	dump($prenom);
+    	$prenom = $em->getRepository(Prenom::class)->findOneBy(['nom'=>'AADEL']);
+    	$name = $em->getRepository(Prenom::class)->findByNom(['AARON','CAMILLE']);
+    
+    	dump($name);
 
     	return $this->render('prenom/index.html.twig', [
     		'controller_name' => 'PrenomController',
-    		'page'=>'Prénoms d\'avant'
+    		'page'=>'Prénoms d\'avant',
+    		'nom' => $name
     	]);
     }
 

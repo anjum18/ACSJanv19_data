@@ -43,8 +43,6 @@ class Prenom
         return $this->id;
     }
 
-    
-
     public function getGenre(): ?string
     {
         return $this->genre;
@@ -57,24 +55,24 @@ class Prenom
         return $this;
     }
 
-    public function getNom(): ?int
+    public function getNom(): ?string
     {
         return $this->nom;
     }
 
-    public function setNom(int $nom): self
+    public function setNom(string $nom): self
     {
         $this->nom = $nom;
 
         return $this;
     }
 
-    public function getAnnee(): ?int
+    public function getAnnee(): ?string
     {
         return $this->annee;
     }
 
-    public function setAnneee(int $annee): self
+    public function setAnneee(string $annee): self
     {
         $this->annee = $annee;
 

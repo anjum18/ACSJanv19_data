@@ -4,18 +4,33 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+.example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+.example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ page }}! ✅</h1>
+	<h1>Hello {{ page }}! ✅</h1>
 
-    This friendly message is coming from:
-    <p>Coucouuuu</p>
-    <ul>
+	This friendly message is coming from:
+	<p>Coucouuuu</p>
+    {# <ul>
         <li>Your controller at <code><a href="{{ '/var/www/html/Projet_18_data/Projet_18_data/src/Controller/PrenomController.php'|file_link(0) }}">src/Controller/PrenomController.php</a></code></li>
         <li>Your template at <code><a href="{{ '/var/www/html/Projet_18_data/Projet_18_data/templates/prenom/index.html.twig'|file_link(0) }}">templates/prenom/index.html.twig</a></code></li>
-    </ul>
+    </ul> #}
+
+
+    <select id="yearselect"> 
+    	{% for i in 1900..2017 %}
+    	<option value="{{ i }}">{{ i }}</option>
+    	{% endfor %}
+    </select><br>
+
+
+    {% for item in nom %}
+    {{item.annee}}
+    {{item.nombre}}
+    {% endfor %}
 </div>
+
+
 {% endblock %}
