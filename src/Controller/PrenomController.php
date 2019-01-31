@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-
+use App\Form\Recherche;
+use App\Form\RechercheType;
 use App\Entity\Prenom;
+// use OC\PlatformBundle\Form\RechercheType;
 
 class PrenomController extends AbstractController
 {
@@ -22,12 +24,15 @@ class PrenomController extends AbstractController
 
     	$minByYear = $em->getRepository(Prenom::class)->findMinByYear('1995');
 
+    	$form = $this->createForm(RechercheType::class);
+
     	return $this->render('prenom/index.html.twig', [
     		'controller_name' => 'PrenomController',
     		'page'=>'Prénoms d\'avant',
     		'nom' => $name,
     		'topNom'=>$maxByYear,
-    		'bottomNom' => $minByYear
+    		'bottomNom' => $minByYear,
+    		'form' => $form->createView()
     	]);
     }
 
