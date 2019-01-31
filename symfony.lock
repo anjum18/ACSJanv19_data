@@ -83,11 +83,20 @@
     "fig/link-util": {
         "version": "1.0.0"
     },
+    "illuminate/contracts": {
+        "version": "v5.7.23"
+    },
+    "illuminate/support": {
+        "version": "v5.7.23"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
     "monolog/monolog": {
         "version": "1.24.0"
+    },
+    "nesbot/carbon": {
+        "version": "1.36.2"
     },
     "nikic/php-parser": {
         "version": "v4.2.0"
@@ -418,6 +427,12 @@
     },
     "webmozart/assert": {
         "version": "1.4.0"
+    },
+    "xethron/laravel-4-generators": {
+        "version": "3.1.1"
+    },
+    "xethron/migrations-generator": {
+        "version": "v2.0.2"
     },
     "zendframework/zend-code": {
         "version": "3.3.1"

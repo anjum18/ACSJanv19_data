@@ -3,7 +3,7 @@
 #    controller: App\Controller\DefaultController::index
 
 prenoms:
-    path: /prenoms
+    path: /
     defaults: {_controller: 'App\Controller\PrenomController::index'}
 
 resultat:
