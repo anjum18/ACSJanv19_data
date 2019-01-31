@@ -3,11 +3,16 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Prénoms d'avant{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('build/app.css') }}" type="text/css" media="all" />
+<link rel="stylesheet" href="{{ asset('build/style.css') }}" type="text/css" media="all" />
+        {% endblock %}
        
     </head>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+<script type="text/javascript" src="{{ asset('build/style.js') }}"></script>
+        {% endblock %}
     </body>
 </html>
