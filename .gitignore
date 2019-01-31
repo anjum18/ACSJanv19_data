@@ -25,5 +25,6 @@ npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 
-
+yarn.lock
 composer.json
+yarn-error.log
