@@ -19,10 +19,10 @@ class PrenomRepository extends ServiceEntityRepository
         parent::__construct($registry, Prenom::class);
     }
 
-    // /**
-    //  * @return Prenom[] Returns an array of Prenom objects
-    //  */
-    /*
+    /**
+     * @return Prenom[] Returns an array of Prenom objects
+     */
+    
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('p')
@@ -34,7 +34,7 @@ class PrenomRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Prenom
