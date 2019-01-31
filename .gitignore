@@ -3,6 +3,11 @@ DataProjectController.php
 data_project
 
 ###> symfony/framework-bundle ###
+/yarn-error.log
+/yarn.lock
+yarn.lock
+composer.json
+/composer.json
 /.env.local
 /.env.local.php
 /.env.*.local
