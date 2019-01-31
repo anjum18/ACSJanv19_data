@@ -1,6 +1,7 @@
 
 ###> symfony/framework-bundle ###
 /yarn-error.log
+/yarn.lock
 /composer.json
 /.env.local
 /.env.local.php
