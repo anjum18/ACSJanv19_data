@@ -42,13 +42,14 @@ class PrenomRepository extends ServiceEntityRepository
     public function findMAxByYear($value)
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
+            ->where('p.annee = :annee')
+            ->setParameter('annee', $value)
+            ->orderBy('p.nombre', 'DESC')
+            ->setMaxResults(5)
             ->getQuery()
             ->getResult()
         ;
+    
     }    
 
     /*

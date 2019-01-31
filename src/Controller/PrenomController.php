@@ -18,13 +18,14 @@ class PrenomController extends AbstractController
     	$em = $this->getDoctrine()->getManager();
     	$prenom = $em->getRepository(Prenom::class)->findOneBy(['nom'=>'AADEL']);
     	$name = $em->getRepository(Prenom::class)->findByNom(['AARON','CAMILLE']);
-    
-    	dump($name);
+    	$maxByYear = $em->getRepository(Prenom::class)->findMAxByYear('1995');
+    	dump($maxByYear);
 
     	return $this->render('prenom/index.html.twig', [
     		'controller_name' => 'PrenomController',
     		'page'=>'Prénoms d\'avant',
-    		'nom' => $name
+    		'nom' => $name,
+    		'topNom'=>$maxByYear
     	]);
     }
 
