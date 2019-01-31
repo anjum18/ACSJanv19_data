@@ -1,3 +1,6 @@
+yarn.lock
+DataProjectController.php
+data_project
 
 ###> symfony/framework-bundle ###
 /.env.local
@@ -26,4 +29,3 @@ yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 
 serveur/
-yarn.lock
