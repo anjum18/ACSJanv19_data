@@ -24,3 +24,6 @@ Connection.php
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+
+serveur/
+yarn.lock
