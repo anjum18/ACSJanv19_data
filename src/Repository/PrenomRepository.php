@@ -22,8 +22,24 @@ class PrenomRepository extends ServiceEntityRepository
     // /**
     //  * @return Prenom[] Returns an array of Prenom objects
     //  */
-    /*
-    public function findByExampleField($value)
+    
+    // public function findByExampleField($value)
+    // {
+    //     return $this->createQueryBuilder('p')
+    //         ->andWhere('p.exampleField = :val')
+    //         ->setParameter('val', $value)
+    //         ->orderBy('p.id', 'ASC')
+    //         ->setMaxResults(10)
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
+
+    /**
+     * @return Prenom[] Returns an array of Prenom objects
+     */
+    
+    public function findMAxByYear($value)
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.exampleField = :val')
@@ -33,8 +49,7 @@ class PrenomRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
-    }
-    */
+    }    
 
     /*
     public function findOneBySomeField($value): ?Prenom

@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PrenomRepository")
+ * @ORM\Table(name="prenoms")
  */
 class Prenom
 {
@@ -20,17 +21,17 @@ class Prenom
      * @ORM\Column(type="text")
      */
     
-    private $sex;
+    private $genre;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     private $nom;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=4)
      */
-    private $date;
+    private $annee;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -42,40 +43,38 @@ class Prenom
         return $this->id;
     }
 
-    
-
-    public function getSex(): ?string
+    public function getGenre(): ?string
     {
-        return $this->sex;
+        return $this->genre;
     }
 
-    public function setSex(string $sex): self
+    public function setGenre(string $genre): self
     {
-        $this->sex = $sex;
+        $this->genre = $genre;
 
         return $this;
     }
 
-    public function getNom(): ?int
+    public function getNom(): ?string
     {
         return $this->nom;
     }
 
-    public function setNom(int $nom): self
+    public function setNom(string $nom): self
     {
         $this->nom = $nom;
 
         return $this;
     }
 
-    public function getDate(): ?int
+    public function getAnnee(): ?string
     {
-        return $this->date;
+        return $this->annee;
     }
 
-    public function setDate(int $date): self
+    public function setAnneee(string $annee): self
     {
-        $this->date = $date;
+        $this->annee = $annee;
 
         return $this;
     }
@@ -91,4 +90,5 @@ class Prenom
 
         return $this;
     }
+
 }
