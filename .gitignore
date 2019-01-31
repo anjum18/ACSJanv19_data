@@ -1,5 +1,7 @@
 
 ###> symfony/framework-bundle ###
+/yarn-error.log
+/composer.json
 /.env.local
 /.env.local.php
 /.env.*.local
@@ -24,3 +26,4 @@ Connection.php
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+
