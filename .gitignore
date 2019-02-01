@@ -9,6 +9,7 @@ yarn.lock
 composer.json
 /composer.json
 /.env.local
+.env.local
 /.env.local.php
 /.env.*.local
 /public/bundles/
