@@ -61,7 +61,7 @@ class PrenomRepository extends ServiceEntityRepository
             ->setParameter('annee',$value)
             ->setParameter('genre',$valeur)
             ->orderBy('p.nombre', 'ASC')
-            ->setMaxResults(50)
+            ->setMaxResults(5)
             ->getQuery()
             ->getResult()
         ;
