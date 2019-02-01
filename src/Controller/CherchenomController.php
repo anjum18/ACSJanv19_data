@@ -34,4 +34,20 @@ class CherchenomController extends AbstractController
             'form'=>$form->createView(),
         ]);
     }
+
+     public function searchPrenom(Request $request)
+    {
+        $q = $request->query->get('q'); // use "term" instead of "q" for jquery-ui
+        $results = $this->getDoctrine()->getRepository('App:Prenom')->findLikeName($q);
+//créer des routes pour le guider
+        return $this->render('your_template.json.twig', ['results' => $results]);
+    }
+
+    public function getPrenom($id = null)
+    {
+        $prenom = $this->getDoctrine()->getRepository('App:Prenom')->find($id);
+
+        return $this->json($prenom->getName());
+    }
+    //après faut récupérer l'id de l'input caché dans lequel a stocké l'entrée sur laquelle on a cliqué.
 }
