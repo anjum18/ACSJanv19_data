@@ -11,21 +11,27 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 
+
 class RechercheType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        
+        $choices=range(1900,2017);
+        $choices =array_flip($choices);
+    
+
         $builder
-            ->add('field_name')
-            ->add('annee')
-            ->add('save', SubmitType::class, [
-            'attr' => ['class' => 'save'],
+            ->add('genre', ChoiceType::class, [
+                'choices' => ['Masculin'=>1, 'Féminin'=>2]
             ])
             ->add('year', ChoiceType::class, [
-            'choices'=> range(1900,2017)]
+            'choices'=> $choices
+            ]
             )
-            ->add('from', EmailType::class)
+            ->add('Rechercher', SubmitType::class, [
+            'attr' => ['class' => 'save btn-success'],
+            ])
+            // ->add('from', EmailType::class)
             // ->add('dateOfBirth', DateTimeType::class)
             // ->add('message', TextareaType::class)
         ;

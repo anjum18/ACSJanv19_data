@@ -4,17 +4,36 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+.example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+.example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
+
+
+
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-<p>cucuuuuu!</p>
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/Projet_18_data/Projet_18_data/src/Controller/ResultatController.php'|file_link(0) }}">src/Controller/ResultatController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/Projet_18_data/Projet_18_data/templates/resultat/index.html.twig'|file_link(0) }}">templates/resultat/index.html.twig</a></code></li>
-    </ul>
+
+	<h1>Hello {{ controller_name }}! ✅</h1>
+	<p>cucuuuuu!</p>
+
+	<h3>les cinq prénoms les plus utilisés en {{ annee }} sont :</h3>
+	{% if topNom is defined %}
+	{% for item in topNom %}
+	<a href="https://www.prenoms.com/prenom/{{item.nom}}.html">{{item.nom}}</a>
+	({{item.nombre}} bébés)<br>
+	{% endfor %}
+
+	{% endif %}
+	<h3>Les cinq prénoms les moins donnés en  sont :</h3>
+	{% if noms is defined %}
+	{% for item in noms %}
+	<a href="https://www.prenoms.com/prenom/{{item.nom}}.html">{{item.nom}}</a>
+	({{item.nombre}} bébés)<br>
+	{% endfor %}
+	{% endif %}
 </div>
+
+
+
+
 {% endblock %}
