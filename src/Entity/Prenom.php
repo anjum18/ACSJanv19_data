@@ -34,7 +34,7 @@ class Prenom
     private $annee;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer")
      */
     private $nombre;
 
@@ -79,12 +79,12 @@ class Prenom
         return $this;
     }
 
-    public function getNombre(): ?string
+    public function getNombre(): ?int
     {
         return $this->nombre;
     }
 
-    public function setNombre(string $nombre): self
+    public function setNombre(int $nombre): self
     {
         $this->nombre = $nombre;
 

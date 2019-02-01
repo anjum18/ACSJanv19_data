@@ -25,11 +25,20 @@
     	{% endfor %}
     </select><br>
 
-
-    {% for item in nom %}
-    {{item.annee}}
-    {{item.nombre}}
+{# web scraping #}
+    {% for item in topNom %}
+    
+    <a href="https://www.prenoms.com/prenom/{{item.nom}}.html">{{item.nom}}</a>
+    {{item.nombre}}<br>
     {% endfor %}
+    {% for item in bottomNom %}
+    {{item.nom}}
+    {{item.nombre}}<br>
+    {% endfor %}
+
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
 </div>
 
 
