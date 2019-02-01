@@ -39,11 +39,13 @@ class PrenomRepository extends ServiceEntityRepository
      * @return Prenom[] Returns an array of Prenom objects
      */
     
-    public function findMaxByYear($value)
+    public function findMaxByYear($value, $valeur)
     {
         return $this->createQueryBuilder('p')
             ->where('p.annee = :annee')
-            ->setParameter('annee', $value)
+            ->andwhere('p.genre = :genre')
+            ->setParameters(['annee'=> $value, 
+                'genre' => $valeur])
             ->orderBy('p.nombre', 'DESC')
             ->setMaxResults(5)
             ->getQuery()
@@ -51,13 +53,15 @@ class PrenomRepository extends ServiceEntityRepository
         ;
     
     }    
-    public function findMinByYear($value)
+    public function findMinByYear($value, $valeur)
     {
         return $this->createQueryBuilder('p')
             ->where('p.annee = :annee')
-            ->setParameter('annee', $value)
+            ->andwhere('p.genre = :genre')
+            ->setParameter('annee',$value)
+            ->setParameter('genre',$valeur)
             ->orderBy('p.nombre', 'ASC')
-            ->setMaxResults(5)
+            ->setMaxResults(50)
             ->getQuery()
             ->getResult()
         ;

@@ -4,13 +4,38 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+.example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+.example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
+
+
+
 <div class="example-wrapper">
-    <h1>Prénoms d'avant</h1>
-<p>cucuuuuu!</p>
+
+
+	<h1>Hello {{ controller_name }}! ✅</h1>
+	<p>cucuuuuu!</p>
+
+	<h3>les cinq prénoms les plus utilisés en {{ annee }} sont :</h3>
+	{% if topNom is defined %}
+	{% for item in topNom %}
+	<a href="https://www.prenoms.com/prenom/{{item.nom}}.html">{{item.nom}}</a>
+	({{item.nombre}} bébés)<br>
+	{% endfor %}
+
+	{% endif %}
+	<h3>Les cinq prénoms les moins donnés en  sont :</h3>
+	{% if noms is defined %}
+	{% for item in noms %}
+	<a href="https://www.prenoms.com/prenom/{{item.nom}}.html">{{item.nom}}</a>
+	({{item.nombre}} bébés)<br>
+	{% endfor %}
+	{% endif %}
 
 </div>
+
+
+
+
 {% endblock %}
