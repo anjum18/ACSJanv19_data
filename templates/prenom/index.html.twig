@@ -41,11 +41,9 @@
         {{ form_start(form) }}
 
         {{ form_errors(form)}}
-    {#     {% for i in 1900..2017 %} #}
-            {{ form_widget(form.year) }}
+            {{ form_widget(form) }}
 
-    {#  {% endfor %} #}
-        {{ form_widget(form.year) }}
+ 
 
         {{ form_end(form) }}
     </div>
