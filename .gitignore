@@ -1,15 +1,11 @@
 
 ###> symfony/framework-bundle ###
-<<<<<<< HEAD
-composer.json
-yarn.lock
-=======
+
 /yarn-error.log
 /yarn.lock
 yarn.lock
 composer.json
 /composer.json
->>>>>>> d724fa16d412bdef197076315086f159f1520618
 /.env.local
 /.env.local.php
 /.env.*.local

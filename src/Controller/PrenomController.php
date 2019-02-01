@@ -17,7 +17,7 @@ class PrenomController extends AbstractController
     
     	$em = $this->getDoctrine()->getManager();
     	$prenom = $em->getRepository(Prenom::class)->findOneBy(['nom'=>'AADEL']);
-    	$name = $em->getRepository(Prenom::class)->findByNom(['AARON','CAMILLE']);
+    	$name = $em->getRepository(Prenom::class)->findMaxByYear(['annee']);
     
     	dump($name);
 
