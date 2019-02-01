@@ -3,54 +3,46 @@
 {% block title %}Prénoms d'avant{% endblock %}
 
 {% block body %}
-<style>
-.example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-.example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="container-fluid">
+        <div class="row bandeau">
+            <h1>Prénoms d'avant</h1>
+        </div>
+        <div class="row">
+            <p>Notre base de données comprend tous les prénoms déclarés en France de 1900 à 2017. Elle répertorie le nombre de fois qu'un prénom a été donné selon l'année. Avec notre moteur de recherche, découvrez comment vous auriez pu vous appeler à l'année de votre choix !</p>
+        </div>
+    </div>
+    <div class="container">
+        <select id="yearselect"> 
+            {% for i in 1900..2017 %}
+            <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+        </select><br>
 
-<div class="example-wrapper">
-	<h1>Hello {{ page }}! ✅</h1>
+        {# web scraping #}
+        {% for item in topNom %}
+        <a href="https://www.prenoms.com/prenom/{{item.nom}}.html">{{item.nom}}</a>
+        {{item.nombre}}<br>
+        {% endfor %}
 
-	This friendly message is coming from:
-	<p>Coucouuuu</p>
-    {# <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/Projet_18_data/Projet_18_data/src/Controller/PrenomController.php'|file_link(0) }}">src/Controller/PrenomController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/Projet_18_data/Projet_18_data/templates/prenom/index.html.twig'|file_link(0) }}">templates/prenom/index.html.twig</a></code></li>
-    </ul> #}
+        {% for item in bottomNom %}
+        {{item.nom}}
+        {{item.nombre}}<br>
+        {% endfor %}
 
+        {# {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }} #}
 
-    <select id="yearselect"> 
-    	{% for i in 1900..2017 %}
-    	<option value="{{ i }}">{{ i }}</option>
-    	{% endfor %}
-    </select><br>
+        {{ form_start(form) }}
 
-    {# web scraping #}
-    {% for item in topNom %}
-    
-    <a href="https://www.prenoms.com/prenom/{{item.nom}}.html">{{item.nom}}</a>
-    {{item.nombre}}<br>
-    {% endfor %}
-    {% for item in bottomNom %}
-    {{item.nom}}
-    {{item.nombre}}<br>
-    {% endfor %}
+        {{ form_errors(form)}}
+    {#     {% for i in 1900..2017 %} #}
+            {{ form_widget(form.year) }}
 
-{# {{ form_start(form) }}
-{{ form_widget(form) }}
-{{ form_end(form) }} #}
-
-{{ form_start(form) }}
-
-    {{ form_errors(form)}}
-{#     {% for i in 1900..2017 %} #}
+    {#  {% endfor %} #}
         {{ form_widget(form.year) }}
 
-   {#  {% endfor %} #}
-    {{ form_widget(form.year) }}
-
-{{ form_end(form) }}
-</div>
-
+        {{ form_end(form) }}
+    </div>
 
 {% endblock %}
