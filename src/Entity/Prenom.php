@@ -72,7 +72,7 @@ class Prenom
         return $this->annee;
     }
 
-    public function setAnneee(string $annee): self
+    public function setAnnee(string $annee): self
     {
         $this->annee = $annee;
 

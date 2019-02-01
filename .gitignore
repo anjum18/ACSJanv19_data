@@ -3,6 +3,7 @@ DataProjectController.php
 data_project
 
 ###> symfony/framework-bundle ###
+
 /yarn-error.log
 /yarn.lock
 yarn.lock
