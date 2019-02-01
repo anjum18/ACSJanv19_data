@@ -25,11 +25,31 @@
     	{% endfor %}
     </select><br>
 
-
-    {% for item in nom %}
-    {{item.annee}}
-    {{item.nombre}}
+    {# web scraping #}
+    {% for item in topNom %}
+    
+    <a href="https://www.prenoms.com/prenom/{{item.nom}}.html">{{item.nom}}</a>
+    {{item.nombre}}<br>
     {% endfor %}
+    {% for item in bottomNom %}
+    {{item.nom}}
+    {{item.nombre}}<br>
+    {% endfor %}
+
+{# {{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }} #}
+
+{{ form_start(form) }}
+
+    {{ form_errors(form)}}
+{#     {% for i in 1900..2017 %} #}
+        {{ form_widget(form.year) }}
+
+   {#  {% endfor %} #}
+    {{ form_widget(form.year) }}
+
+{{ form_end(form) }}
 </div>
 
 
