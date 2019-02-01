@@ -25,6 +25,8 @@
         {% endfor %}
 
         {% for item in bottomNom %}
+        {% if noms is defined %}
+        {% for item in noms %}
         {{item.nom}}
         {{item.nombre}}<br>
         {% endfor %}

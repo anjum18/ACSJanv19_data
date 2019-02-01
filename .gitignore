@@ -1,3 +1,6 @@
+yarn.lock
+DataProjectController.php
+data_project
 
 ###> symfony/framework-bundle ###
 
@@ -7,6 +10,7 @@ yarn.lock
 composer.json
 /composer.json
 /.env.local
+.env.local
 /.env.local.php
 /.env.*.local
 /public/bundles/
@@ -31,3 +35,4 @@ npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 
+serveur/
