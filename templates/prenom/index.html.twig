@@ -12,24 +12,27 @@
         </div>
     </div>
     <div class="container">
-        <select id="yearselect"> 
+        {# <select id="yearselect"> 
             {% for i in 1900..2017 %}
             <option value="{{ i }}">{{ i }}</option>
             {% endfor %}
-        </select><br>
+        </select><br> #}
 
         {# web scraping #}
-        {% for item in topNom %}
-        <a href="https://www.prenoms.com/prenom/{{item.nom}}.html">{{item.nom}}</a>
-        {{item.nombre}}<br>
-        {% endfor %}
-
-        {% for item in bottomNom %}
         {% if noms is defined %}
         {% for item in noms %}
         {{item.nom}}
         {{item.nombre}}<br>
         {% endfor %}
+        
+        {% for item in topNom %}
+        <a href="https://www.prenoms.com/prenom/{{item.nom}}.html">{{item.nom}}</a>
+        {{item.nombre}}<br>
+        {% endfor %}
+        {% endif %}
+
+
+        
 
         {# {{ form_start(form) }}
         {{ form_widget(form) }}
@@ -38,11 +41,9 @@
         {{ form_start(form) }}
 
         {{ form_errors(form)}}
-    {#     {% for i in 1900..2017 %} #}
-            {{ form_widget(form.year) }}
+            {{ form_widget(form) }}
 
-    {#  {% endfor %} #}
-        {{ form_widget(form.year) }}
+ 
 
         {{ form_end(form) }}
     </div>
