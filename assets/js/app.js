@@ -13,6 +13,10 @@ require('../css/app.css');
 
 console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
 
+$('#nom_prenom').autocompleter({
+    url_list: '/prenom_search',
+    url_get: '/prenom_get/'
+});
 
 var options = {
 	url: function(phrase) {
