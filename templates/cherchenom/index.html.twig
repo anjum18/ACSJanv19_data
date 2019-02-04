@@ -11,7 +11,7 @@
 <div class="example-wrapper">
     <h2>Entrez un nom et une année pour savoir combien de fois il a été donné cette année-là (aha-aha) ✅</h2>
 
-
+{% if form is defined %}
    {{ form_start(form) }}
 
     {{ form_errors(form)}}
@@ -22,7 +22,16 @@
     {{ form_widget(form) }}
 
 {{ form_end(form) }}
+{% endif %}
 
+{% if numberPerYear is defined %}
+
+{{numberPerYear}}
+{% endif %}
+
+<div id="coucou">
+    
+</div>
 
 {% if contactdata is defined %}
 {% for item in contactdata %}
@@ -31,23 +40,59 @@
 {% endif %}
 
 
-[{% for prenom in results -%}
+{# [{% for prenom in results -%}
     {{ {id: prenom.id, label: prenom.name, value: prenom.name}|json_encode|raw }}
-    {# use "value" instead of "id" key, if you use jquery-ui #}
+    {# use "value" instead of "id" key, if you use jquery-ui 
     {%- if not loop.last %},{% endif -%}
-{%- endfor %}]
+{%- endfor %}] #}
 </div>
 {% endblock %}
 
 
 {% block javascripts %}
+    
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="{{ asset('bundles/pugxautocompleter/js/autocompleter-jqueryui.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ asset('build/style.js') }}"></script>
+    <script type="text/javascript">
+    $('#cherchenom_Prenom').autocompleter({
+        url_list: '/prenom_search',
+        url_get: '/prenom_get/'
+    });
+    </script>
     <script type="text/javascript" src="{{ asset('build/app.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/aleth.js') }}"></script>
+    <script>
+
+
+function loadDoc(){
+
+let inputNom = document.getElementById('fake_cherchenom_Prenom').value;
+let inputDate = document.getElementById('cherchenom_Annee').value;
+console.log(inputDate);
+                            // let variable = 0;
+                            // variable = document.getElementById('reponseElevePourVariable').value;
+                            // console.log(variable);
+                            var xhttp = new XMLHttpRequest();
+
+
+                            xhttp.onreadystatechange = function() {
+                                if (this.readyState == 4 && this.status == 200){
+                                    document.getElementById('coucou').innerHTML= 'En '+JSON.parse(this.responseText)[0]['annee']+' il y a eu '+JSON.parse(this.responseText)[0]['nombre']+' '+JSON.parse(this.responseText)[0]['nom']+'.';
+                                    // console.log(document.getElementById('coucou').innerHTML);
+                                }
+                            }
+
+
+
+                            xhttp.open("POST", "searchresult", true);
+                            xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                            xhttp.send('inputNom=' + inputNom+'&inputDate='+inputDate);
+                                
+                            }
+
+    </script>
     {% endblock %}

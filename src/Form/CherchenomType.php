@@ -13,14 +13,17 @@ use PUGX\AutocompleterBundle\Form\Type\AutocompleteType;
 use App\Entity\Prenom;
 
 class CherchenomType extends AbstractType
-{
+{   
+    
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Prenom', AutocompleteType::class, ['class' => Author::class])
+            ->add('Prenom', AutocompleteType::class, ['class' => Prenom::class])
             ->add('Annee')
             // ->add('Département')
-            ->add('Envoyer', SubmitType::class)
+            ->add('Envoyer', SubmitType::class, [
+        'attr' => ['onclick' =>'loadDoc();return false;']
+            ])
         ;
     }
 

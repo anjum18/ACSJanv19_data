@@ -15,5 +15,9 @@ cherchenom:
     defaults: {_controller: 'App\Controller\CherchenomController::index'}
 
 searchprenom:
-    path: /search
+    path: /prenom_search
     defaults: {_controller: 'App\Controller\CherchenomController::searchPrenom'}
+
+searchresult:
+    path: /searchresult
+    defaults: {_controller: 'App\Controller\CherchenomController::howManyPerYear'}

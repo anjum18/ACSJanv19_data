@@ -1,0 +1,9 @@
+.ui-autocomplete *{
+	background: #FFF;
+	list-style-type: none;
+	font-family: 'Century Gothic';
+}
+
+#ui-id-1:hover {
+	background-color: #dfc8a4;
+}

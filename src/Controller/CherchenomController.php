@@ -8,6 +8,8 @@ use App\Form\CherchenomType;
 use App\Entity\Prenom;
 use Symfony\Component\HttpFoundation\Request;
 
+use Symfony\Component\HttpFoundation\Response;
+
 class CherchenomController extends AbstractController
 {
     /**
@@ -19,13 +21,13 @@ class CherchenomController extends AbstractController
 		$form = $this->createForm(CherchenomType::class);
         $form->handleRequest($request);
        
-        $q = $request->query->get('q'); // use "term" instead of "q" for jquery-ui
+        $q = $request->query->get('term'); // use "term" instead of "q" for jquery-ui
         $results = $this->getDoctrine()->getRepository('App:Prenom')->findByNom($q);
 
         if ($form->isSubmitted() && $form->isValid()) {
  
             $contactFormData = $form->getData();
- var_dump($contactFormData);
+
 		return $this->render('cherchenom/index.html.twig', [
             'controller_name' => 'CherchenomController',
             'form'=>$form->createView(),
@@ -42,10 +44,11 @@ class CherchenomController extends AbstractController
 
      public function searchPrenom(Request $request)
     {
-        $q = $request->query->get('q'); // use "term" instead of "q" for jquery-ui
-        $results = $this->getDoctrine()->getRepository('App:Prenom')->findByNom($q);
+        $q = strtoupper($request->query->get('term')); // use "term" instead of "q" for jquery-ui
+
+        $results = $this->getDoctrine()->getRepository('App:Prenom')->findByNomLike($q);
         //like name : faire une fonction qui cherche selon le début du mot
-        return $this->redirect('/bonus', ['results' => $results]);
+        return $this->render('cherchenom/search.json.twig', ['results' => $results]);
         // return $this->render('your_template.json.twig', ['results' => $results]);
         //chemin en get
     }
@@ -54,6 +57,26 @@ class CherchenomController extends AbstractController
     {
         $prenom = $this->getDoctrine()->getRepository('App:Prenom')->find($id);
 
-        return $this->json($prenom->getName());
+        return $this->json($prenom->getNom());
+    }
+
+    public function howManyPerYear() {
+        if (isset($_POST['inputNom'])) {
+            $nom = $_POST['inputNom'];
+            $date = $_POST['inputDate'];
+            $em = $this->getDoctrine()->getManager();
+            $numberPerYear = $em->getRepository(Prenom::class)->howManyForYear($nom, $date);
+
+            $serializer = $this->container->get('serializer');
+            $reports = $serializer->serialize($numberPerYear, 'json');
+
+            return new Response($reports);
+
+        }else {
+            return $this->render('cherchenom/index.html.twig', [
+                'numberPerYear' => 'probleme'
+            ]);
+        }
+
     }
 }

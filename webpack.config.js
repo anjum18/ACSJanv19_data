@@ -18,6 +18,8 @@ Encore
      * and one CSS file (e.g. app.css) if you JavaScript imports CSS.
      */
     .addEntry('app', './assets/js/app.js')
+    .addEntry('aleth', './assets/js/aleth.js')
+    .addEntry('stylealeth', './assets/css/stylealeth.css')
     .addEntry('style', './assets/css/style.css')
     .addEntry('styleanjum', './assets/css/styleanjum.css')
     .addEntry('stylekevin', './assets/css/stylekevin.css')
