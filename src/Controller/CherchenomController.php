@@ -19,6 +19,9 @@ class CherchenomController extends AbstractController
 		$form = $this->createForm(CherchenomType::class);
         $form->handleRequest($request);
        
+        $q = $request->query->get('q'); // use "term" instead of "q" for jquery-ui
+        $results = $this->getDoctrine()->getRepository('App:Prenom')->findByNom($q);
+
         if ($form->isSubmitted() && $form->isValid()) {
  
             $contactFormData = $form->getData();
@@ -26,12 +29,31 @@ class CherchenomController extends AbstractController
 		return $this->render('cherchenom/index.html.twig', [
             'controller_name' => 'CherchenomController',
             'form'=>$form->createView(),
-            'contactdata'=>$contactFormData
+            'contactdata'=>$contactFormData,
+            'results'=>$results
         ]);
                    }
         return $this->render('cherchenom/index.html.twig', [
             'controller_name' => 'CherchenomController',
             'form'=>$form->createView(),
+            'results'=>$results
         ]);
+    }
+
+     public function searchPrenom(Request $request)
+    {
+        $q = $request->query->get('q'); // use "term" instead of "q" for jquery-ui
+        $results = $this->getDoctrine()->getRepository('App:Prenom')->findByNom($q);
+        //like name : faire une fonction qui cherche selon le début du mot
+        return $this->redirect('/bonus', ['results' => $results]);
+        // return $this->render('your_template.json.twig', ['results' => $results]);
+        //chemin en get
+    }
+
+    public function getPrenom($id = null)
+    {
+        $prenom = $this->getDoctrine()->getRepository('App:Prenom')->find($id);
+
+        return $this->json($prenom->getName());
     }
 }

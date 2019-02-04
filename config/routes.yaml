@@ -13,3 +13,7 @@ resultat:
 cherchenom:
     path: /bonus
     defaults: {_controller: 'App\Controller\CherchenomController::index'}
+
+searchprenom:
+    path: /search
+    defaults: {_controller: 'App\Controller\CherchenomController::searchPrenom'}
