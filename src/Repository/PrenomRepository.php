@@ -61,7 +61,7 @@ class PrenomRepository extends ServiceEntityRepository
             ->setParameter('annee',$value)
             ->setParameter('genre',$valeur)
             ->orderBy('p.nombre', 'ASC')
-            ->setMaxResults(50)
+            ->setMaxResults(5)
             ->getQuery()
             ->getResult()
         ;
@@ -78,4 +78,20 @@ class PrenomRepository extends ServiceEntityRepository
         ;
     }
     */
+
+        public function findLikeName($q)
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.annee = :annee')
+            ->andwhere('p.genre = :genre')
+            ->setParameter('annee',$value)
+            ->setParameter('genre',$valeur)
+            ->orderBy('p.nombre', 'ASC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult()
+        ;
+    
+    }   
+
 }

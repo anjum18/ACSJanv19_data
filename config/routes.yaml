@@ -9,3 +9,7 @@ prenoms:
 resultat:
     path: /resultat
     defaults: {_controller: 'App\Controller\ResultatController::index'}
+
+cherchenom:
+    path: /bonus
+    defaults: {_controller: 'App\Controller\CherchenomController::index'}
