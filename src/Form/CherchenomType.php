@@ -9,8 +9,8 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use App\Entity\Prenom;
 use PUGX\AutocompleterBundle\Form\Type\AutocompleteType;
+use App\Entity\Prenom;
 
 
 class CherchenomType extends AbstractType
@@ -18,6 +18,7 @@ class CherchenomType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+
             ->add('nom',AutocompleteType::class, ['class' => Prenom::class])
             ->add('Annee')
             // ->add('Département')
