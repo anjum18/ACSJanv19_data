@@ -1,4 +1,56 @@
-*
-{
-    /* font-size: 60px; */
+
+body {
+	background-color: #FAEECA;
+	font-family: 'roboto';
 }
+
+.body
+{
+	padding: 50px 50px 50px 50px;
+}
+
+
+.bandeau
+{
+	background-image: url('../images/bandeau.jpg');
+	height: 250px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: relative;
+}
+
+.row > p 
+{
+	font-size: 26px;
+}
+
+h1 {
+	text-transform: uppercase;
+	position: absolute;
+	color: #FAEECA;
+	font-family: 'roboto';
+	font-size: 60px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+a {
+	text-decoration: none;
+}
+
+.résultat
+{
+	margin-top: 20px;
+}
+
+#recherche
+{
+	margin-top: 50px;
+}
+
+.custom-select, #recherche_genre, #recherche_year, .bg-custom
+{
+	background-color: #DFC8A4;
+}
+

@@ -1,51 +1,47 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Prénoms d'avant{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
-        <div class="row bandeau">
-            <h1>Prénoms d'avant</h1>
+    <div class="body">
+        <div class="container-fluid">
+            <div class="row">
+                <p>Notre base de données comprend tous les prénoms déclarés en France de 1900 à 2017. Elle répertorie le nombre de fois qu'un prénom a été donné selon l'année. Avec notre moteur de recherche, découvrez comment vous auriez pu vous appeler à l'année de votre choix !</p>
+            </div>
         </div>
-        <div class="row">
-            <p>Notre base de données comprend tous les prénoms déclarés en France de 1900 à 2017. Elle répertorie le nombre de fois qu'un prénom a été donné selon l'année. Avec notre moteur de recherche, découvrez comment vous auriez pu vous appeler à l'année de votre choix !</p>
-        </div>
-    </div>
-    <div class="container">
-        {# <select id="yearselect"> 
-            {% for i in 1900..2017 %}
-            <option value="{{ i }}">{{ i }}</option>
+        <div class="container">
+            {# <select id="yearselect"> 
+                {% for i in 1900..2017 %}
+                <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select><br> #}
+
+            {# web scraping #}
+            {% if noms is defined %}
+            {% for item in noms %}
+            {{item.nom}}
+            {{item.nombre}}<br>
             {% endfor %}
-        </select><br> #}
-
-        {# web scraping #}
-        {% if noms is defined %}
-        {% for item in noms %}
-        {{item.nom}}
-        {{item.nombre}}<br>
-        {% endfor %}
-        
-        {% for item in topNom %}
-        <a href="https://www.prenoms.com/prenom/{{item.nom}}.html">{{item.nom}}</a>
-        {{item.nombre}}<br>
-        {% endfor %}
-        {% endif %}
+            
+            {% for item in topNom %}
+            <a href="https://www.prenoms.com/prenom/{{item.nom}}.html">{{item.nom}}</a>
+            {{item.nombre}}<br>
+            {% endfor %}
+            {% endif %}
 
 
-        
+            
 
-        {# {{ form_start(form) }}
-        {{ form_widget(form) }}
-        {{ form_end(form) }} #}
-
-        {{ form_start(form) }}
-
-        {{ form_errors(form)}}
+            {# {{ form_start(form) }}
             {{ form_widget(form) }}
+            {{ form_end(form) }} #}
 
- 
+            {{ form_start(form) }}
 
-        {{ form_end(form) }}
+            {{ form_errors(form)}}
+                {{ form_widget(form) }}
+
+            {{ form_end(form) }}
+        </div>
     </div>
 
 {% endblock %}
