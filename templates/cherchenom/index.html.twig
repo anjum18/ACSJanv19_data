@@ -53,9 +53,11 @@
     {%- if not loop.last %},{% endif -%}
     {%- endfor %}] #}
 </div>
+
+<div class="logo">
+            <img class=" justify-content-center" src="{{ asset('build/images/logo_prenoms.png')}} " alt="Logo.">
+        </div>
 {% endblock %}
-
-
 {% block javascripts %}
 
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -88,7 +90,7 @@ function loadDoc(){
 
                             xhttp.onreadystatechange = function() {
                                 if (this.readyState == 4 && this.status == 200){
-                                    document.getElementById('coucou').innerHTML= 'En '+JSON.parse(this.responseText)[0]['annee']+' il y a eu '+JSON.parse(this.responseText)[0]['nombre']+' '+JSON.parse(this.responseText)[0]['nom']+'.';
+                                    document.getElementById('coucou').innerHTML= 'En '+JSON.parse(this.responseText)[0]['annee']+', '+JSON.parse(this.responseText)[0]['nombre']+' personnes ont été nommées '+JSON.parse(this.responseText)[0]['nom']+'.';
                                     // console.log(document.getElementById('coucou').innerHTML);
                                 }
                             }

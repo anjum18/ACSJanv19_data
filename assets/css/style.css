@@ -1,10 +1,11 @@
 body {
-	background-color: #DFC8A4;
-	font-family: 'Century Gothic';
+	background-color: #FAEECA;
+	font-family: 'roboto';
 }
 
 .bandeau
 {
+
 	background-image: url('../images/bandeau.jpg');
 	height: 250px;
 	background-size: cover;
@@ -19,15 +20,32 @@ body {
 
 h1 {
 	text-transform: uppercase;
-	position: absolute;
+/*	position: absolute;*/
 	color: white;
 	font-weight: bold;
 	font-size: 60px;
+	/*width: 80%;
+	text-align: center;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    vertical-align: center;*/
 
 }
 a {
 	text-decoration: none;
+}
+.résultat
+{
+	margin-top: 20px;
+}
+
+#recherche
+{
+	margin-top: 50px;
+}
+
+.custom-select, #recherche_genre, #recherche_year, .bg-custom, #fake_cherchenom_Prenom, #cherchenom_Annee
+{
+	background-color: #DFC8A4;
 }

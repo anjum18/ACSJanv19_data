@@ -23,14 +23,16 @@ class RechercheType extends AbstractType
 
         $builder
             ->add('genre', ChoiceType::class, [
-                'choices' => ['Masculin'=>1, 'Féminin'=>2]
+                'choices' => ['Masculin'=>1, 'Féminin'=>2],
+                'attr' => ['class' => 'custom-select'],
             ])
             ->add('year', ChoiceType::class, [
-            'choices'=> $choices
+            'choices'=> $choices,
+            'attr' => ['class' => 'custom-select'],
             ]
             )
             ->add('Rechercher', SubmitType::class, [
-            'attr' => ['class' => 'save btn-success'],
+            'attr' => ['class' => 'save btn-outline-danger'],
             ])
             // ->add('from', EmailType::class)
             // ->add('dateOfBirth', DateTimeType::class)

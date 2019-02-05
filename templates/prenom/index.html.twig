@@ -7,11 +7,11 @@
         <div class="row bandeau">
             <h1>Prénoms d'avant</h1>
         </div>
-        <div class="row">
+    </div>
+        <div class="row padding">
             <p>Notre base de données comprend tous les prénoms enregistrés en France de 1900 à 2017. Elle répertorie le nombre de fois qu'un prénom a été donné selon l'année. Avec notre moteur de recherche, découvrez comment vous auriez pu vous appeler à l'année de votre choix !</p>
         </div>
-    </div>
-    <div class="container">
+    <div class="container form1">
         {# <select id="yearselect"> 
             {% for i in 1900..2017 %}
             <option value="{{ i }}">{{ i }}</option>
@@ -48,4 +48,7 @@
         {{ form_end(form) }}
     </div>
 
+<div class="logo">
+            <img class=" justify-content-center" src="{{ asset('build/images/logo_prenoms.png')}} " alt="Logo.">
+    </div>
 {% endblock %}

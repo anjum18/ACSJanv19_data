@@ -22,7 +22,7 @@ class CherchenomType extends AbstractType
             ->add('Annee')
             // ->add('Département')
             ->add('Envoyer', SubmitType::class, [
-        'attr' => ['onclick' =>'loadDoc();return false;']
+        'attr' => ['onclick' =>'loadDoc();return false;', 'class' => 'btn btn-outline-danger']
             ])
         ;
     }

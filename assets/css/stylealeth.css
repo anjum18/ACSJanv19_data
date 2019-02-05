@@ -1,7 +1,7 @@
 .ui-autocomplete *{
-	background: #FFF;
+	background: #dfc8a4;
 	list-style-type: none;
-	font-family: 'Century Gothic';
+
 }
 
 #ui-id-1:hover {
@@ -27,4 +27,64 @@
 	padding: 40px;
 	border: 1px solid black;
 	text-align: center;
+}
+.bandeau h1 {
+    font-family: 'Marcellus SC', serif;
+	font-weight: 300;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+.example-wrapper > * {
+	width: 90%;
+	display: block;
+	margin: auto;
+}
+.padding {
+	width: 80%;
+	margin-right: auto;
+	margin-left: auto;
+}
+.form1 {
+	font-size: 1rem;
+}
+.bandeau {
+	justify-content: center;
+}
+.col-md-6 > a {
+	color: darksalmon;
+}
+.col-md-6 > a:hover {
+	text-decoration: none;
+	color: #a68059;
+	cursor: pointer;
+}
+.bebe {
+	font-size: 0.8rem;
+	color: #3e433d;
+}
+.lesTops {
+}
+.logo img {
+	max-width: 200px;
+}
+.justify-content-center {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 10px;
+}
+.btn-outline {
+	margin-top: 40px;
+	margin-bottom:30px;
+}
+.col-md-6 h3 {
+	color: #a68059;
+}
+
+@media all and (max-width: 500px) {
+	.padding > p {
+		font-size: 1.2em;
+	}
 }
