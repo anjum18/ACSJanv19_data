@@ -7,3 +7,24 @@
 #ui-id-1:hover {
 	background-color: #dfc8a4;
 }
+
+.ui-helper-hidden-accessible > div {
+	display: none;
+}
+.example-wrapper h2{
+	margin-top: 30px;
+	margin-bottom: 40px;
+}
+
+.input_nom {
+	margin-bottom: 20px;
+}
+#cherchenom_Envoyer {
+	margin-top: 20px;
+}
+
+#coucou {
+	padding: 40px;
+	border: 1px solid black;
+	text-align: center;
+}

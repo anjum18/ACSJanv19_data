@@ -4,75 +4,82 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+.example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+.example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
-
-<div class="example-wrapper">
-    <h2>Entrez un nom et une année pour savoir combien de fois il a été donné cette année-là (aha-aha) ✅</h2>
-
-{% if form is defined %}
-   {{ form_start(form) }}
-
-    {{ form_errors(form)}}
-    {# {% for item in form.placeholder %} #}
-        {{ form_widget(form)}}
-    {# {% endfor %} #}
-
-    {{ form_widget(form) }}
-
-{{ form_end(form) }}
-{% endif %}
-
-{% if numberPerYear is defined %}
-
-{{numberPerYear}}
-{% endif %}
-
-<div id="coucou">
-    
+<div class="container-fluid">
+    <div class="row bandeau">
+        <h1>Prénoms d'avant</h1>
+    </div>
 </div>
 
-{% if contactdata is defined %}
-{% for item in contactdata %}
-	{{item}}
-{% endfor %}
-{% endif %}
+<div class="example-wrapper">
+    <h2>Page de recherche</h2>
+    <h4>Entrez un nom et une année comprise entre 1900 et 2017. Vous verrez combien de fois ce nom a été donné cette année-là</h4>
+
+    {% if form is defined %}
+    {{ form_start(form) }}
+
+        {{ form_errors(form)}}
+    {# {% for item in form.placeholder %} #}
+        {{ form_label(form.Prenom, 'Prénom:') }}
+        {{form_widget(form.Prenom, {'attr': {'class': 'input_nom'}})}}
+    {# {% endfor %} #}
+        {{ form_label(form.Annee, 'Année (entre 1900 et 2017):') }}
+        {{ form_widget(form.Annee, {'attr': {'class': 'input_annee'}}) }}
+
+    {{ form_end(form) }}
+    {% endif %}
+
+    {% if numberPerYear is defined %}
+
+    {{numberPerYear}}
+    {% endif %}
+
+    <div id="coucou">
+<p>Choisissez un nom et une date, et envoyez</p>
+    </div>
+
+    {% if contactdata is defined %}
+    {% for item in contactdata %}
+    {{item}}
+    {% endfor %}
+    {% endif %}
 
 
 {# [{% for prenom in results -%}
     {{ {id: prenom.id, label: prenom.name, value: prenom.name}|json_encode|raw }}
     {# use "value" instead of "id" key, if you use jquery-ui 
     {%- if not loop.last %},{% endif -%}
-{%- endfor %}] #}
+    {%- endfor %}] #}
 </div>
 {% endblock %}
 
 
 {% block javascripts %}
-    
-    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <script src="{{ asset('bundles/pugxautocompleter/js/autocompleter-jqueryui.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{{ asset('build/style.js') }}"></script>
-    <script type="text/javascript">
-    $('#cherchenom_Prenom').autocompleter({
-        url_list: '/prenom_search',
-        url_get: '/prenom_get/'
-    });
-    </script>
-    <script type="text/javascript" src="{{ asset('build/app.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('build/aleth.js') }}"></script>
-    <script>
+
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="{{ asset('bundles/pugxautocompleter/js/autocompleter-jqueryui.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{{ asset('build/style.js') }}"></script>
+<script type="text/javascript">
+$('#cherchenom_Prenom').autocompleter({
+    url_list: '/prenom_search',
+    url_get: '/prenom_get/'
+});
+</script>
+<script type="text/javascript" src="{{ asset('build/app.js') }}"></script>
+<script type="text/javascript" src="{{ asset('build/aleth.js') }}"></script>
+<script>
 
 
 function loadDoc(){
 
-let inputNom = document.getElementById('fake_cherchenom_Prenom').value;
-let inputDate = document.getElementById('cherchenom_Annee').value;
-console.log(inputDate);
+    let inputNom = document.getElementById('fake_cherchenom_Prenom').value;
+    let inputDate = document.getElementById('cherchenom_Annee').value;
+
                             // let variable = 0;
                             // variable = document.getElementById('reponseElevePourVariable').value;
                             // console.log(variable);
@@ -91,8 +98,8 @@ console.log(inputDate);
                             xhttp.open("POST", "searchresult", true);
                             xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                             xhttp.send('inputNom=' + inputNom+'&inputDate='+inputDate);
-                                
-                            }
 
-    </script>
-    {% endblock %}
+                        }
+
+                        </script>
+                        {% endblock %}
