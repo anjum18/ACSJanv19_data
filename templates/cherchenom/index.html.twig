@@ -35,7 +35,7 @@
 
     {{numberPerYear}}
     {% endif %}
-
+<div id="test"></div>
     <div id="coucou">
 <p>Choisissez un nom et une date, et envoyez</p>
     </div>
@@ -46,13 +46,19 @@
     {% endfor %}
     {% endif %}
 
+</div>
 
+{% if nom is defined %}
+<div class="scrap">
+<h3>{{nom}}</h3>
+{{texte_fete}}
+</div>
+{% endif %}
 {# [{% for prenom in results -%}
     {{ {id: prenom.id, label: prenom.name, value: prenom.name}|json_encode|raw }}
     {# use "value" instead of "id" key, if you use jquery-ui 
     {%- if not loop.last %},{% endif -%}
     {%- endfor %}] #}
-</div>
 
 <div class="logo">
             <img class=" justify-content-center" src="{{ asset('build/images/logo_prenoms.png')}} " alt="Logo.">
@@ -102,6 +108,36 @@ function loadDoc(){
                             xhttp.send('inputNom=' + inputNom+'&inputDate='+inputDate);
 
                         }
+
+
+
+    let divDeReponses= document.getElementById('ui-id-1');
+function sendNameToGetYear(event) {
+    let inputNom = document.getElementById('fake_cherchenom_Prenom').value;
+      var xhttp = new XMLHttpRequest();
+
+
+                            xhttp.onreadystatechange = function() {
+                                if (this.readyState == 4 && this.status == 200){
+                                   
+                                    document.getElementById('test').innerHTML= JSON.parse(this.responseText)[0]['annee']+'coucou';
+                                    console.log(JSON.parse(this.responseText));
+                                }
+                            }
+
+
+
+                            xhttp.open("POST", "searchyear", true);
+                            xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                            xhttp.send('inputNom=' + inputNom);
+
+// alert(inputNom);
+    
+}
+
+
+//ajouter déclenchement entrée
+divDeReponses.addEventListener('click',sendNameToGetYear);
 
                         </script>
                         {% endblock %}

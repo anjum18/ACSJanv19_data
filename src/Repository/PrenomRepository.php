@@ -71,8 +71,13 @@ class PrenomRepository extends ServiceEntityRepository
     {
 
         return $this->createQueryBuilder('p')
+            ->select('p.id')
+
+            ->select('DISTINCT p.nom')
+
             ->where('p.nom LIKE :nom')
             ->setParameter('nom',$q.'%')
+
             ->setMaxResults(50)
             ->getQuery()
             ->getResult()
@@ -93,6 +98,20 @@ class PrenomRepository extends ServiceEntityRepository
         ;
     
     }  
+      public function SearchYearByName($nom)
+    {
+
+        return $this->createQueryBuilder('p')
+            ->select('p.annee')
+            ->where('p.nom = :nom')
+            // ->andwhere('p.nom = :nom')
+            ->setParameter('nom',$nom)
+            ->setMaxResults(117)
+            ->getQuery()
+            ->getResult()
+        ;
+    
+    } 
     /*
     public function findOneBySomeField($value): ?Prenom
     {

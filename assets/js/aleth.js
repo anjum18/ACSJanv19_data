@@ -1,4 +1,4 @@
-console.log('prout');
+
 
 function loadDoc(){
 
@@ -24,3 +24,5 @@ console.log(inputNom);
 							xhttp.send('inputNom=' + inputNom+'&inputDate='+inputDate);
 								
 							}
+
+							// tentative d'ajax pour cibler l'année

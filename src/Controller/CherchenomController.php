@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Form\CherchenomType;
 use App\Entity\Prenom;
 use Symfony\Component\HttpFoundation\Request;
-
+use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpFoundation\Response;
 
 class CherchenomController extends AbstractController
@@ -47,6 +47,7 @@ class CherchenomController extends AbstractController
         $q = strtoupper($request->query->get('term')); // use "term" instead of "q" for jquery-ui
 
         $results = $this->getDoctrine()->getRepository('App:Prenom')->findByNomLike($q);
+        
         //like name : faire une fonction qui cherche selon le début du mot
         return $this->render('cherchenom/search.json.twig', ['results' => $results]);
         // return $this->render('your_template.json.twig', ['results' => $results]);
@@ -62,21 +63,70 @@ class CherchenomController extends AbstractController
 
     public function howManyPerYear() {
         if (isset($_POST['inputNom'])) {
+
             $nom = $_POST['inputNom'];
-            $date = $_POST['inputDate'];
+            $date = $_POST['inputDate']+1900;
             $em = $this->getDoctrine()->getManager();
             $numberPerYear = $em->getRepository(Prenom::class)->howManyForYear($nom, $date);
 
             $serializer = $this->container->get('serializer');
             $reports = $serializer->serialize($numberPerYear, 'json');
 
+// create curl resourcephph
+$ch = curl_init();
+
+// set url
+https://www.cosmopolitan.fr/decouvrez-les-prenoms-qui-seront-le-plus-donnes-en-2018,2008959.asp
+// curl_setopt($ch, CURLOPT_URL, "https://www.naissance.fr/prenoms/top50/2018");
+curl_setopt($ch, CURLOPT_URL, "https://www.prenoms.com/prenom/'.$nom.'.html");
+dump("https://www.prenoms.com/prenom/'.$nom.'.html");
+//return the transfer as a string
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+// $output contains the output string
+$output = curl_exec($ch);
+// close curl resource to free up system resources
+
+curl_close($ch);
+
+$crawler = new Crawler($output);
+
+
+// $texteFete = $crawler->filter('div.illustration > p ')->text();
+// if ($texteFete !== NULL) {
+
+//         return $this->render('cherchenom/index.html.twig', [
+//         'texte_fete' =>$texteFete,
+//         'nom'=>$nom,
+//         ]);
+// } else {
+
+// }
             return new Response($reports);
 
-        }else {
+        } else {
             return $this->render('cherchenom/index.html.twig', [
                 'numberPerYear' => 'probleme'
             ]);
         }
 
     }
+    public function searchYear() {
+        if (isset($_POST['inputNom'])) {
+            $nom = $_POST['inputNom'];
+             $em = $this->getDoctrine()->getManager();
+            $YearsPerName = $em->getRepository(Prenom::class)->SearchYearByName($nom);
+            $serializer = $this->container->get('serializer');
+            $reports = $serializer->serialize($YearsPerName, 'json');
+            dump($reports);
+
+
+            return new Response($reports);
+        } else {
+            return $this->render('cherchenom/index.html.twig', [
+                'numberPerYear' => 'probleme'
+            ]);
+        }
+    }
+
 }

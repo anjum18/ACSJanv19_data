@@ -19,3 +19,7 @@ searchprenom:
 searchresult:
     path: /searchresult
     defaults: {_controller: 'App\Controller\CherchenomController::howManyPerYear'}
+
+searchyear:
+    path: /searchyear
+    defaults: {_controller: 'App\Controller\CherchenomController::searchYear'}

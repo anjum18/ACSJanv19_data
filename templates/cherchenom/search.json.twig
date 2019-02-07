@@ -1,5 +1,7 @@
 [{% for prenom in results -%}
-    {{ {id: prenom.id, label: prenom.nom, value: prenom.nom}|json_encode|raw }}
+    {{ { label: prenom.nom, value: prenom.nom}|json_encode|raw }}
     {# use "value" instead of "id" key, if you use jquery-ui #}
     {%- if not loop.last %},{% endif -%}
 {%- endfor %}]
+
+{# id: prenom.id,  avant label#}

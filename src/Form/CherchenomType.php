@@ -17,9 +17,14 @@ class CherchenomType extends AbstractType
     
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+         $choices=range(1900,2017);
+        $choices =array_flip($choices);
         $builder
             ->add('Prenom', AutocompleteType::class, ['class' => Prenom::class])
-            ->add('Annee')
+            ->add('Annee', ChoiceType::class, [
+            'choices'=> $choices,
+            'attr' => ['class' => 'custom-select'],
+            ])
             // ->add('Département')
             ->add('Envoyer', SubmitType::class, [
         'attr' => ['onclick' =>'loadDoc();return false;', 'class' => 'btn btn-outline-danger']
